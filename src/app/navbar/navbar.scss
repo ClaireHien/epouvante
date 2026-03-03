@@ -1,0 +1,9 @@
+
+// Animation subtile pour le logo
+nav img {
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+}

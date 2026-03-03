@@ -1,0 +1,12 @@
+// Image de fond fixe avec opacité 20%
+.hanted-mansion-bg {
+  background-image: url('/assets/background.jpg');
+  opacity: 0.4;
+  filter: grayscale(100%) brightness(0.6);
+  transform: scale(1.1); 
+}
+
+// Typographie horrifique moderne
+h1{
+  font-family: 'DM Serif Display ', serif; 
+}

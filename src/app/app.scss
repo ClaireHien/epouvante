@@ -1,0 +1,38 @@
+
+// Dégradé de disparition au scroll (Fade to Black)
+.scroll-fade-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 9, 11, 0) 0%,
+    rgba(9, 9, 11, 0.4) 30%,
+    rgba(9, 9, 11, 0.8) 60%,
+    rgba(9, 9, 11, 1) 90%
+  );
+}
+
+// Halo lumineux derrière le titre
+.bg-radial-glow {
+  background: radial-gradient(
+    circle at 50% 40%, 
+    rgba(16, 185, 129, 0.25) 0%, 
+    rgba(16, 185, 129, 0) 60%
+  );
+}
+
+// Style global pour lisser le scroll
+:host {
+  display: block;
+  background-color: #09090b; // Zinc-950
+}
+
+// Style des cartes pour un effet "glassmorphism" sombre
+main section {
+  backdrop-filter: blur(8px);
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(16, 185, 129, 0.05), transparent);
+    z-index: -1;
+  }
+}
