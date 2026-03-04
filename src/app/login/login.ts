@@ -18,7 +18,7 @@ export class LoginComponent {
 
   onLogin() {
     this.auth.login(this.credentials).subscribe({
-      next: () => this.router.navigate(['/users']),
+      next: () => this.router.navigate(['/profile']),
       error: (err) => console.error('Erreur de connexion', err)
     });
   }
