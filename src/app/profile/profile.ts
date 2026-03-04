@@ -25,4 +25,19 @@ export class ProfileComponent implements OnInit {
       error: (err) => console.error('Erreur profil', err)
     });
   }
+  // Méthode pour payer un fanzine en attente
+  pay(id: number) {
+    this.fanzineService.payFanzine(id).subscribe({
+      next: () => {
+        alert('Paiement validé ! Votre grimoire est désormais accessible.');
+        this.ngOnInit(); // On rafraîchit les données
+      },
+      error: (err) => console.error('Erreur paiement', err)
+    });
+  }
+
+  // Méthode pour télécharger le PDF
+  download(id: number, fileName: string) {
+    alert("Téléchargement du fanzine ! Il ne reste plus qu'à le bouquiner !")
+  }
 }

@@ -19,8 +19,11 @@
           
           <div class="relative aspect-[3/4] overflow-hidden">
             <img [src]="'assets/fanzine-' + fanzine.number + '.png'" 
-                [alt]="fanzine.name"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-80 group-hover:grayscale-30">
+                 [alt]="fanzine.name"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                 [class.grayscale-30]="isLoggedIn && isOwned(fanzine.id)"
+                 [class.grayscale-80]="!isLoggedIn || !isOwned(fanzine.id)"
+                 [class.group-hover:grayscale-30]="!isLoggedIn || !isOwned(fanzine.id)">
             
             <div class="absolute top-4 left-4 bg-emerald-600 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter shadow-lg">
               N°{{ fanzine.number }}
@@ -40,10 +43,21 @@
             </p>
 
             <div class="flex items-center gap-3">
-              <button (click)="quickBuy(fanzine.id)"
-                class="flex-1 bg-emerald-600 cursor-crosshair hover:bg-emerald-500 text-white py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)] active:scale-95">
-                Achat Rapide
-              </button>
+              @if (isLoggedIn && isOwned(fanzine.id)) {
+                <div class="flex-1 flex items-center justify-center gap-2 py-3 bg-emerald-900/20 border border-emerald-500/30 rounded-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-[10px] font-black uppercase tracking-widest text-emerald-400">
+                    Dans l'antre
+                  </span>
+                </div>
+              } @else {
+                <button (click)="quickBuy(fanzine.id)"
+                  class="flex-1 bg-emerald-600 cursor-crosshair hover:bg-emerald-500 text-white py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)] active:scale-95">
+                  Achat Rapide
+                </button>
+              }
               
               <a [routerLink]="['/fanzine', fanzine.id]"
                 class="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-xl transition-colors">
