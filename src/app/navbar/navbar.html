@@ -2,7 +2,9 @@
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     
     <div class="flex items-center gap-3">
-      <img src="assets/logo-spider.png" alt="Logo" class="w-12 h-12 object-cover drop-shadow-lg">
+      <a routerLink="/">
+        <img src="assets/logo-spider.png" alt="Logo" class="w-12 h-12 object-cover drop-shadow-lg">
+      </a>
       <div class="flex flex-col">
         <span class="text-xl font-bold tracking-tighter text-emerald-400 uppercase leading-none">
           La Petite Maison
@@ -23,10 +25,21 @@
       <div class="h-6 w-[1px] bg-zinc-800 mx-2"></div>
 
       <div class="flex gap-4 items-center">
-        <a routerLink="/login" class="cursor-crosshair text-sm font-semibold hover:text-white transition-colors text-emerald-400 uppercase tracking-widest">Connexion</a>
-        <a routerLink="/register" class="cursor-crosshair px-5 py-2 bg-emerald-600/20 border border-emerald-500/50 rounded-full text-white text-xs font-bold uppercase tracking-widest hover:bg-emerald-600 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.1)]">
-          Rejoindre l'abysse
-        </a>
+        @if (!loggedIn) {
+          <a routerLink="/login" class="cursor-crosshair text-sm font-semibold hover:text-white transition-colors text-emerald-400 uppercase tracking-widest">
+            Connexion
+          </a>
+          <a routerLink="/register" class="cursor-crosshair px-5 py-2 bg-emerald-600/20 border border-emerald-500/50 rounded-full text-white text-xs font-bold uppercase tracking-widest hover:bg-emerald-600 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+            Rejoindre l'abysse
+          </a>
+        } @else {
+          <a routerLink="/profile" class="cursor-crosshair text-sm font-semibold hover:text-emerald-400 transition-colors text-zinc-200 uppercase tracking-widest">
+            Mon Profil
+          </a>
+          <button (click)="logout()" class="cursor-crosshair px-5 py-2 border border-red-900/50 bg-red-900/10 rounded-full text-red-400 text-xs font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all duration-300">
+            Quitter l'antre
+          </button>
+        }
       </div>
     </div>
     
