@@ -1,6 +1,7 @@
 import { Injectable,inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 // Interface pour typer tes données et aider Fen (l'autocomplétion)
 export interface Fanzine {
@@ -18,17 +19,19 @@ export interface Fanzine {
   };
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class FanzineService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = environment.apiUrl;
 
   /**
    * Récupère tous les fanzines (Public)
    */
   getFanzines(): Observable<Fanzine[]> {
+    console.log("Tentative de récupération sur :", `${this.apiUrl}/fanzines`); // AJOUTEZ CECI
     return this.http.get<Fanzine[]>(`${this.apiUrl}/fanzines`);
   }
 
