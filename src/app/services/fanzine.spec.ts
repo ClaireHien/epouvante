@@ -1,13 +1,20 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { FanzineService } from './fanzine';
 
-import { Fanzine } from './fanzine';
-
-describe('Fanzine', () => {
-  let service: Fanzine;
+describe('FanzineService', () => {
+  let service: FanzineService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Fanzine);
+    TestBed.configureTestingModule({
+      providers: [
+        FanzineService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ]
+    });
+    service = TestBed.inject(FanzineService);
   });
 
   it('should be created', () => {

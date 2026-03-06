@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common'; // Pour les directives de base
 import { FormsModule } from '@angular/forms'; 
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 @Component({
   selector: 'app-login',
